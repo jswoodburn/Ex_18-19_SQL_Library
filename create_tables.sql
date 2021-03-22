@@ -50,3 +50,6 @@ date_return date not null
 alter table checkouts 
 add foreign key (book_id) references books (book_id),
 add foreign key (reader_id) references readers (reader_id); 
+
+-- alter table books
+-- alter column isbn char(16);
