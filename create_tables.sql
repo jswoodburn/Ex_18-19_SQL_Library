@@ -3,17 +3,17 @@
 
 use library;
 
-
-
 create table authors (
 author_id int auto_increment not null primary key,
 first_name varchar(50) not null,
 last_name varchar(50) not null
 );
+
 create table genres (
 genre_id int auto_increment not null primary key,
 genre varchar(50) not null
 );
+
 create table books (
 book_id int auto_increment not null primary key,
 title varchar(100) not null,
@@ -30,13 +30,12 @@ reader_id int auto_increment not null primary key,
 first_name varchar(50) not null,
 last_name varchar(50) not null,
 age int not null
-
 );
+
 create table employees (
 employee_id int auto_increment not null primary key,
 first_name varchar(50) not null,
 last_name varchar(50) not null
-
 );
 
 create table checkouts(
@@ -46,11 +45,7 @@ date_out date not null,
 date_due date not null,
 reader_id int not null,
 date_return date not null
-
-
 );
-
-select * from checkouts;
 
 alter table checkouts 
 add foreign key (book_id) references books (book_id),
