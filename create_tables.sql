@@ -1,4 +1,4 @@
--- create database library;
+create database library;
 -- uncomment line 1 if running script for first time
 
 use library;
