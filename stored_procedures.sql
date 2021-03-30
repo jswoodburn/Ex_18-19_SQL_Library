@@ -19,7 +19,6 @@ DELIMITER ;
 
 CALL searchLibraryByTitle ('Law');
 
--- join checkouts, books, if they type in their name they get book title and return date
 DROP PROCEDURE IF EXISTS checkUserReturnDates;
 DELIMITER //
 CREATE PROCEDURE checkUserReturnDates
@@ -31,19 +30,24 @@ INNER JOIN books
 ON checkouts.book_id = books.book_id
 INNER JOIN person
 ON books.author_id = person.person_id
-WHERE reader_id = id
+WHERE reader_id = id and date_return is null
 ORDER BY date_due ASC;
 END //
 DELIMITER ;
 
 CALL checkUserReturnDates (5);
 
+DROP PROCEDURE IF EXISTS returnCheckedOutBook;
+DELIMITER //
+CREATE PROCEDURE returnCheckedOutBook
+(IN id int, today date)
+BEGIN
+update checkouts set date_return = today
+where checkout_id = id;
+END //
+DELIMITER ;
 
+-- select * from checkouts;
 
-
-
-
--- insert into books (title, author_id, isbn, shelf_reference)
--- values ('The Daily Stoic', 10, '3768387878019876', 'KD12C2'),
--- ('The 48 Laws of Power', 11, '3768187878019876', 'EK49D1'),
+CALL returnCheckedOutBook (3, '2021-03-30');
 
