@@ -1,8 +1,10 @@
+use library;
+
 -- root, librarian, reader
 CALL searchLibraryByTitle ('Law');
 
--- only root (to clear example row)
-delete from checkouts
+-- root, librarian (to clear example row)
+update checkouts set date_return = Null
 where checkout_id = 3;
 
 -- root, librarian, reader

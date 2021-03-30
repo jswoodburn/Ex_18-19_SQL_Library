@@ -14,7 +14,7 @@ grant insert, update (date_return) on library.checkouts to 'librarian'@'localhos
 
 grant select on library.books to 'reader'@'localhost';
 grant select on library.checkouts to 'reader'@'localhost';
-grant update (first_name, last_name) on library.person to 'reader'@'localhost';
+grant select (first_name, last_name), update (first_name, last_name) on library.person to 'reader'@'localhost';
 
 grant execute on procedure library.searchLibraryByTitle to 'librarian'@'localhost';
 grant execute on procedure library.searchLibraryByTitle to 'reader'@'localhost';
@@ -23,3 +23,4 @@ grant execute on procedure library.checkUserReturnDates to 'librarian'@'localhos
 grant execute on procedure library.checkUserReturnDates to 'reader'@'localhost';
 
 grant execute on procedure library.returnCheckedOutBook to 'librarian'@'localhost';
+
